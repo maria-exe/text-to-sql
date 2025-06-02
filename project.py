@@ -1,25 +1,22 @@
 # MySQL
+import MySQLdb
 
-def novo_test():
+db1 = MySQLdb.connect(
+"localhost",
+"root",
+"983148",
+"movie"
+)
 
-    import MySQLdb
+cursor = db1.cursor()
+cursor.execute("Select * from actors")
+empl_data = cursor.fetchall()
 
-    db1 = MySQLdb.connect(
-    "localhost",
-    "root",
-    "983148",
-    "movie"
-    )
+for linha in empl_data:
+    print(linha)
 
-    cursor = db1.cursor()
-    cursor.execute("Select * from actors")
-    empl_data = cursor.fetchall()
-
-    for linha in empl_data:
-        print(linha)
-
-    cursor.close()  
-    db1.close()
+cursor.close()  
+db1.close()
 
 
 # Postgresql
